@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: olah
+  namespace: olah
+  labels:
+    app: olah
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 18090
+      targetPort: 18090
+  selector:
+    app: olah

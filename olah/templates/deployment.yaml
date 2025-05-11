@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: olah
+  name: olah
+  namespace: olah
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: olah
+  template:
+    metadata:
+      labels:
+        app: olah
+    spec:
+      containers:
+      - image: ghcr.io/surajssd/olah:v0.4.1
+        name: olah
+        command:
+        - olah-cli
+        args:
+        - --config
+        - /config/configs.toml
+        ports:
+        - containerPort: 18090
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+        {{- if .Values.enableHostPath}}
+        - name: olah-repos
+          mountPath: /repos
+        {{- end }}
+      volumes:
+      - name: config-volume
+        configMap:
+          name: olah-config
+      {{- if .Values.enableHostPath}}
+      - name: olah-repos
+        hostPath:
+          path: /mnt/olah-repos
+          type: DirectoryOrCreate
+      {{- end }}
