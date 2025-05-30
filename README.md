@@ -3,11 +3,13 @@
 ## Deployment
 
 ```bash
+helm repo add olah https://surajssd.github.io/k8s-hf-mirror
+helm repo update
 helm upgrade -i --wait \
     --create-namespace \
     --namespace olah \
     olah \
-    ./olah
+    olah/olah
 ```
 
 ## Using the cache with vLLM
