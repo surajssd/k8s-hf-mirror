@@ -1,0 +1,26 @@
+name: Release Charts
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/chart-releaser.yaml
+    - olah/**
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Setup Go
+      uses: actions/setup-go@v5
+    - name: Run Chart Releaser
+      run: |
+        curl -LO https://raw.githubusercontent.com/surajssd/llm-k8s/ffa2b25b73be3b57f44baef29ea2ac50ff099a77/scripts/hack/chart-releaser.sh
+        bash ./chart-releaser.sh --charts-dir ./ --owner surajssd --repo k8s-hf-mirror --skip-existing
+      env:
+        CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}

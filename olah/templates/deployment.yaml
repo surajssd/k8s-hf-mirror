@@ -39,6 +39,7 @@ spec:
       {{- if .Values.enableHostPath}}
       - name: olah-repos
         hostPath:
+          # TODO: Parameterize this path
           path: /mnt/olah-repos
           type: DirectoryOrCreate
       {{- end }}
