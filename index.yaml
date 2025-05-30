@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  olah:
+  - apiVersion: v2
+    appVersion: v0.4.1
+    created: "2025-05-29T20:06:22.53998-07:00"
+    description: A Helm chart for Kubernetes
+    digest: d74c2b782a9f32dfc8ff89fe292613b6d135243eb0c4fb4818746400b50ac8bc
+    name: olah
+    type: application
+    urls:
+    - https://github.com/surajssd/k8s-hf-mirror/releases/download/olah-0.1.0/olah-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-05-29T20:06:22.539998-07:00"
