@@ -36,10 +36,9 @@ spec:
       - name: config-volume
         configMap:
           name: olah-config
-      {{- if .Values.enableHostPath}}
+      {{- if .Values.storage.hostPath.enabled }}
       - name: olah-repos
         hostPath:
-          # TODO: Parameterize this path
-          path: /mnt/olah-repos
+          path: {{ .Values.storage.hostPath.path }}
           type: DirectoryOrCreate
       {{- end }}
