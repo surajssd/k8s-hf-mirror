@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-go@v5
     - name: Run Chart Releaser
       run: |
-        curl -LO https://raw.githubusercontent.com/surajssd/llm-k8s/ffa2b25b73be3b57f44baef29ea2ac50ff099a77/scripts/hack/chart-releaser.sh
+        curl -LO https://raw.githubusercontent.com/surajssd/llm-k8s/96d8571889ae1177ff325d04b6b2c8f78202d0d8/scripts/hack/chart-releaser.sh
         bash ./chart-releaser.sh --charts-dir ./ --owner surajssd --repo k8s-hf-mirror --skip-existing
       env:
         CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
